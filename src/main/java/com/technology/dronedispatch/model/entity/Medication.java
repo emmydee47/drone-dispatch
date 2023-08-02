@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
 
@@ -18,7 +19,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-//@Audited(withModifiedFlag = true)
+@Audited(withModifiedFlag = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Medication extends Load<Long> implements Serializable {
 

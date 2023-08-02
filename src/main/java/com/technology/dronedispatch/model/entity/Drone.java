@@ -6,6 +6,7 @@ import com.technology.dronedispatch.model.enums.DroneState;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -21,7 +22,7 @@ import static com.technology.dronedispatch.model.enums.DroneState.IDLE;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-//@Audited(withModifiedFlag = true)
+@Audited(withModifiedFlag = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Drone extends BaseEntity<Long> implements Serializable {
 
