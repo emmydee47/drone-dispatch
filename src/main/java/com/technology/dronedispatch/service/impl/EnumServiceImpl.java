@@ -20,7 +20,7 @@ public class EnumServiceImpl implements EnumService {
     public ResponseEntity<Map<String, List<String>>> getAllEnums() throws IOException {
         Map<String, List<String>> enumMap = new TreeMap<>();
 
-        String packageName = "com.technology.dispatch.model.enums";
+        String packageName = "com.technology.dronedispatch.model.enums";
         String packagePath = packageName.replace('.', '/');
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
