@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 
 @Slf4j
 @RunWith(MockitoJUnitRunner.class)
-public class SequencerServiceTests {
+public class SequencerServiceUnitTests {
 
     @Mock
     private SequencerRepository sequencerRepository;
