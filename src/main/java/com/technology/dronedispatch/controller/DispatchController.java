@@ -16,7 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/dispatch")
+@RequestMapping(path = "/dispatch/drones")
 @RequiredArgsConstructor
 @Validated
 @CrossOrigin("*")
@@ -24,21 +24,21 @@ public class DispatchController {
 
     private final DispatchService dispatchService;
 
-    @PostMapping(path = "/register-drone", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseDto<Drone>> registerDrone(@Valid
                                                             @RequestBody
                                                             DroneRegisterRequest droneRegisterRequest) {
         return dispatchService.registerDrone(droneRegisterRequest);
     }
 
-    @PutMapping(path = "/load-drone", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/load", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseDto<Drone>> loadDrone(@Valid
                                                         @RequestBody
                                                         DroneLoadingRequest droneLoadingRequest) {
         return dispatchService.loadDrone(droneLoadingRequest);
     }
 
-    @GetMapping(path = "/get-medication-items-by-drone", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/medication-items", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<ResponseDto<Page<Medication>>> getMedicationItemsByDrone(@RequestParam(name = "droneSerialNumber")
                                                                             String droneSerialNumber,
                                                                             @RequestParam(name = "page", defaultValue = "0")
@@ -48,7 +48,7 @@ public class DispatchController {
         return dispatchService.getMedicationItemsByDrone(droneSerialNumber, page, pageRecord);
     }
 
-    @GetMapping(path = "/get-available-drones", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/available", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<ResponseDto<Page<DroneView>>> getAvailableDrones(@RequestParam(name = "page", defaultValue = "0")
                                                                     int page,
                                                                     @RequestParam(name = "pageRecord", defaultValue = "20")
@@ -56,7 +56,7 @@ public class DispatchController {
         return dispatchService.getAvailableDrones(page, pageRecord);
     }
 
-    @GetMapping(path = "/get-battery-level-by-drone", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/battery-level", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<ResponseDto<Integer>> getBatteryLevelByDrone(@RequestParam(name = "droneSerialNumber")
                                                                 String droneSerialNumber) {
         return dispatchService.getBatteryLevelByDrone(droneSerialNumber);

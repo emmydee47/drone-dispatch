@@ -20,7 +20,6 @@ public class DroneJob extends QuartzJobBean {
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        log.info("Executing Job with key {}", jobExecutionContext.getJobDetail().getKey());
         simulateRealTimeDroneBatteryDepletion();
     }
 
